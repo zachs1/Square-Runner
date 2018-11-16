@@ -28,9 +28,10 @@ function Person(posx, posy) {
 
     }
 
-    this.detectCollision = function(obs) {
-        if( (obs.posx <= this.posx + this.w) && 
-            (obs.posx + obs.w >= this.posx) )
+    this.detectCollision = function(obs_queue) {
+        for(i = 0; i < obs_queue.length; i++)
+        if( (obs_queue[i].posx <= this.posx + this.w) && 
+            (obs_queue[i].posx + obs_queue[i].w >= this.posx) )
             {
                 return true;
             }
