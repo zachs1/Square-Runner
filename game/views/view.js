@@ -2,16 +2,48 @@ function View(type) {
 
     this.type = type;
     if (type == 'welcomeview') {
+        //play button
+        this.button_width = 200;
+        this.button_height = 100;
+        this.play_button_hover = false;
+        
         this.show = function () {
             background(255);
             textAlign(CENTER, CENTER);
             textFont('arial');
             textSize(100);
-            text('SQUARE RUNNER', windowWidth / 2, 150);
+            fill(0);
+            text('SQUARE RUNNER', windowWidth / 2, 100);
+
+            this.button_posx = windowWidth / 2 - this.button_width/2;
+            this.button_posy =  windowHeight/2 - this.button_height/2;
+            
+            
+            if(mouseX >= this.button_posx && mouseX <= this.button_posx + this.button_width
+                && mouseY <= this.button_posy + this.button_height && mouseY >= this.button_posy) {
+                    fill(0);
+                    rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
+                    textSize(40);
+                    fill(255);
+                    text('PLAY', windowWidth/2, windowHeight/2);
+                    this.play_button_hover = true;
+                    
+                }
+            else {
+                fill(255);
+                stroke(0);
+                rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
+                textSize(40);
+                fill(0);
+                text('PLAY', windowWidth/2, windowHeight/2);
+                this.play_button_hover = false;
+            }
+            
         }
     }
 
     else if (type == 'playview') {
+        this.play_button_hover = false;
         this.show = function () {
 
             background(0);
@@ -33,17 +65,45 @@ function View(type) {
                 tc.cycle();
             }
 
-
         }
     }
 
     else if (type == 'loseview') {
+        this.play_button_hover = false;
         this.show = function () {
-            background(100);
+            this.button_width = 300;
+            this.button_height = 100;
+            this.button_posx = windowWidth/2 - this.button_width/2;
+            this.button_posy =  windowHeight/2 - this.button_height/2;
+
+            background(200, 5, 25);
             textAlign(CENTER, CENTER);
             textFont('arial');
             textSize(100);
-            text('YOU LOST', windowWidth / 2, 150);
+            fill(0);
+            noStroke();
+            text('YOU LOST', windowWidth / 2, 100);
+
+            if(mouseX >= this.button_posx && mouseX <= this.button_posx + this.button_width
+                && mouseY <= this.button_posy + this.button_height && mouseY >= this.button_posy) {
+                    fill(0);
+                    rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
+                    textSize(40);
+                    fill(255);
+                    text('Play again?', windowWidth/2, windowHeight/2);
+                    this.play_button_hover = true;
+                    
+                }
+            else {
+                fill(255);
+                stroke(0);
+                rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
+                textSize(40);
+                fill(0);
+                text('Play again?', windowWidth/2, windowHeight/2);
+                this.play_button_hover = false;
+            }
+            
         }
     }
 

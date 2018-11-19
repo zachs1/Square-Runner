@@ -16,6 +16,7 @@ function setup() {
   //controllers
     tc = new TerrainController();
     tc.generate();
+
 }
 
 
@@ -33,12 +34,16 @@ function keyReleased() {
 
 function mousePressed() {
     if(currView == 'welcomeview'){
-        currView = 'playview';
+        if(vc.welcome_view.play_button_hover){
+            currView = 'playview';
+        }
     }
 
     else if(currView == 'loseview'){
         tc.generate();
-        currView = 'playview';
+        if(vc.lose_view.play_button_hover){
+            currView = 'playview';
+        }
     }
 }
 
