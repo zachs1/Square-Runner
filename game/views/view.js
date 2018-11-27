@@ -10,7 +10,7 @@ function View(type) {
         this.show = function () {
             background(255);
             textAlign(CENTER, CENTER);
-            textFont('arial');
+            textFont('avante garde');
             textSize(100);
             fill(0);
             text('SQUARE RUNNER', windowWidth / 2, 100);
@@ -44,6 +44,8 @@ function View(type) {
 
     else if (type == 'playview') {
         this.play_button_hover = false;
+        this.score = new Score();
+
         this.show = function () {
 
             background(0);
@@ -65,6 +67,7 @@ function View(type) {
                 tc.cycle();
             }
 
+            this.score.show();
         }
     }
 
@@ -78,7 +81,7 @@ function View(type) {
 
             background(200, 5, 25);
             textAlign(CENTER, CENTER);
-            textFont('arial');
+            textFont('avante garde');
             textSize(100);
             fill(0);
             noStroke();

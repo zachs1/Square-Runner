@@ -8,6 +8,7 @@ function Person(posx, posy) {
     
 
     this.render = function() {
+        fill(255)
         rect(this.posx, this.posy, this.w, this.w);
     }
 

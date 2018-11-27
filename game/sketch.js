@@ -4,14 +4,15 @@ var tc;
 var vertical_scale = 1.5;
 var jump = false;
 var currView = 'welcomeview';
+var person_posx;
 
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
-
+    person_posx = width/8;
   //objects
-    person = new Person(width/8, height/vertical_scale);
+    person = new Person(person_posx, height/vertical_scale);
     
   //controllers
     tc = new TerrainController();
@@ -67,6 +68,10 @@ function draw() {
             collision = person.detectCollision(tc.obs_queue);
             if (collision) {
                 currView = 'loseview';
+                vc.play_view.score.score = 0;
+            }
+            if(tc.detectPass()) {
+                vc.play_view.score.incrementScore();
             }
 
             break;

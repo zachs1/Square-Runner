@@ -48,5 +48,14 @@ function TerrainController () {
         this.obs_queue[9] = new Obstacle(attr_arr[0], attr_arr[1], attr_arr[2], attr_arr[3]);
     }
 
+    //check if need to increment player score
+    this.detectPass = function() {
+        for(i = 0; i < this.queue_len; i++) {
+            if(this.obs_queue[i].detectPassObj()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
