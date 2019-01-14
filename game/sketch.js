@@ -60,15 +60,16 @@ function draw() {
 //-------------------------WELCOME-----------------------------------------------------------------------
         case('welcomeview'):
             vc.welcome_view.show();
+            vc.play_view.score.score = 0;
             break;
         
 //---------------------------PLAY-----------------------------------------------------------------------
         case('playview'):   
             vc.play_view.show();
+            
             collision = person.detectCollision(tc.obs_queue);
             if (collision) {
                 currView = 'loseview';
-                vc.play_view.score.score = 0;
             }
             if(tc.detectPass()) {
                 vc.play_view.score.incrementScore();
@@ -78,7 +79,9 @@ function draw() {
     
 //------------------------PLAY-AGAIN?--------------------------------------------------------------------
         case('loseview'):
+            vc.lose_view.score = vc.play_view.score;
             vc.lose_view.show();
+
             break;
 
         default:

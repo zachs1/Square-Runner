@@ -1,5 +1,5 @@
 function View(type) {
-
+    this.score = new Score();
     this.type = type;
     if (type == 'welcomeview') {
         //play button
@@ -44,14 +44,17 @@ function View(type) {
 
     else if (type == 'playview') {
         this.play_button_hover = false;
-        this.score = new Score();
+        
 
         this.show = function () {
 
             background(0);
-            stroke(255);
+            strokeWeight(1);
+            
             /* ground */
+            stroke(255);
             line(0, height / vertical_scale, width, height / vertical_scale);
+            noStroke();
 
             /* display world */
             person.render();
@@ -84,25 +87,34 @@ function View(type) {
             textFont('avante garde');
             textSize(100);
             fill(0);
-            noStroke();
+            stroke(255);
+            strokeWeight(5)
             text('YOU LOST', windowWidth / 2, 100);
+            textSize(50);
+            strokeWeight(3);
+            text('Score: ' + this.score.score, windowWidth/2, 200);
 
             if(mouseX >= this.button_posx && mouseX <= this.button_posx + this.button_width
                 && mouseY <= this.button_posy + this.button_height && mouseY >= this.button_posy) {
                     fill(0);
+                    strokeWeight(2);
+                    stroke(255);
                     rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
                     textSize(40);
                     fill(255);
+                    noStroke();
                     text('Play again?', windowWidth/2, windowHeight/2);
                     this.play_button_hover = true;
                     
                 }
             else {
                 fill(255);
+                strokeWeight(4);
                 stroke(0);
                 rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
                 textSize(40);
                 fill(0);
+                noStroke();
                 text('Play again?', windowWidth/2, windowHeight/2);
                 this.play_button_hover = false;
             }
