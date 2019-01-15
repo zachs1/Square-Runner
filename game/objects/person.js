@@ -5,11 +5,28 @@ function Person(posx, posy) {
     this.accy = -2;
     this.vely = 25;
     this.w = 15;
+    this.r = 255; 
+    this.g = 255; 
+    this.b = 255;
+    this.currColor = color(this.r, this.g, this.b);
     
 
     this.render = function() {
-        fill(255)
-        rect(this.posx, this.posy, this.w, this.w);
+        //fill(255)
+        //rect(this.posx, this.posy, this.w, this.w);
+        
+        for (var i = this.posx; i < this.posx + this.w; i++) {
+            for (var j = this.posy; j < this.posy + this.w; j++) {
+                set(i, j, color(this.r, this.g, this.b));
+                
+            }
+        }
+        updatePixels();
+        this.r = 255 -  Math.ceil ( 150 * Math.random() );
+        this.g = 255 -  Math.ceil ( 150 * Math.random() );
+        this.b = 255 -  Math.ceil ( 150 * Math.random() );
+
+        
     }
 
     this.jump = function() {

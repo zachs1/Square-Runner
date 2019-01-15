@@ -44,9 +44,11 @@ function View(type) {
 
     else if (type == 'playview') {
         this.play_button_hover = false;
+        this.score = new Score();
         
-
         this.show = function () {
+
+            
 
             background(0);
             strokeWeight(1);
@@ -59,6 +61,7 @@ function View(type) {
             /* display world */
             person.render();
             tc.show();
+            
 
             /* jump, if necessary */
             if (jump || person.posy < height / vertical_scale - person.w) {
@@ -81,7 +84,8 @@ function View(type) {
             this.button_height = 100;
             this.button_posx = windowWidth/2 - this.button_width/2;
             this.button_posy =  windowHeight/2 - this.button_height/2;
-
+            newGame = true;
+            
             background(200, 5, 25);
             textAlign(CENTER, CENTER);
             textFont('avante garde');

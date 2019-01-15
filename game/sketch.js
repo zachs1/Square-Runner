@@ -52,7 +52,7 @@ function mousePressed() {
 var collision = false;
 var temp = 0;
 var vc = new ViewController();
-
+var newGame = false;
 
 function draw() {
 //  FSM game-loop
@@ -66,9 +66,13 @@ function draw() {
 //---------------------------PLAY-----------------------------------------------------------------------
         case('playview'):   
             vc.play_view.show();
-            
+            if (newGame) {
+                vc.play_view.score.score = 0;
+                newGame = false;
+            }
             collision = person.detectCollision(tc.obs_queue);
             if (collision) {
+                
                 currView = 'loseview';
             }
             if(tc.detectPass()) {
