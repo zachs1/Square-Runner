@@ -3,6 +3,8 @@ function TerrainController () {
     this.obs_queue = [];
     this.all_posx = [];
     this.queue_len = 10;
+    this.accel = 0;
+    this.cycleCount = 0;
 
 //  queue constructor
     this.random_attributes = function(prev_posx) {
@@ -14,7 +16,7 @@ function TerrainController () {
         var posx = Math.random() * 250 + 150 + prev_posx;  
         var posy = height/vertical_scale - h;                           
         var attr_arr = [h, w, posx, posy, posx];
-
+        
         return attr_arr;
     }
 
@@ -31,7 +33,7 @@ function TerrainController () {
     this.show = function() {
         for (i = 0; i < this.queue_len; i++) {
             this.obs_queue[i].render();
-            this.obs_queue[i].move();
+            this.obs_queue[i].move(this.accel);
         }
     }
 
@@ -46,6 +48,12 @@ function TerrainController () {
         
 
         this.obs_queue[9] = new Obstacle(attr_arr[0], attr_arr[1], attr_arr[2], attr_arr[3]);
+        this.cycleCount++;
+
+        if (this.cycleCount == 10) {
+            this.accel += 5;
+            this.cycleCount = 0;
+        }
     }
 
     //check if need to increment player score

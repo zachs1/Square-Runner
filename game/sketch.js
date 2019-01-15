@@ -68,6 +68,7 @@ function draw() {
             vc.play_view.show();
             if (newGame) {
                 vc.play_view.score.score = 0;
+                tc.accel = 0;
                 newGame = false;
             }
             collision = person.detectCollision(tc.obs_queue);

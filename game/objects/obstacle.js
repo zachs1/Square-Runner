@@ -10,8 +10,8 @@ function Obstacle(h, w, posx, posy) {
         rect(this.posx, this.posy, w, h);
     }
 
-    this.move = function() {
-        this.posx -= 5;
+    this.move = function(modifier) {
+        this.posx -= 5 + modifier;
     }
 
     this.detectPassObj = function() {

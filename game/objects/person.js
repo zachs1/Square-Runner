@@ -12,13 +12,10 @@ function Person(posx, posy) {
     
 
     this.render = function() {
-        //fill(255)
-        //rect(this.posx, this.posy, this.w, this.w);
-        
+
         for (var i = this.posx; i < this.posx + this.w; i++) {
             for (var j = this.posy; j < this.posy + this.w; j++) {
-                set(i, j, color(this.r, this.g, this.b));
-                
+                set(i, j, color(this.r, this.g, this.b));      
             }
         }
         updatePixels();
