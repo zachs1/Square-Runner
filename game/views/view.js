@@ -85,13 +85,13 @@ function View(type) {
             this.button_posx = windowWidth/2 - this.button_width/2;
             this.button_posy =  windowHeight/2 - this.button_height/2;
             newGame = true;
-            
-            background(200, 5, 25);
+
+            background(150);
             textAlign(CENTER, CENTER);
             textFont('avante garde');
             textSize(100);
             fill(0);
-            stroke(255);
+            stroke(200, 40, 40);
             strokeWeight(5)
             text('YOU LOST', windowWidth / 2, 100);
             textSize(50);
@@ -102,12 +102,11 @@ function View(type) {
                 && mouseY <= this.button_posy + this.button_height && mouseY >= this.button_posy) {
                     fill(0);
                     strokeWeight(2);
-                    stroke(255);
                     rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
                     textSize(40);
-                    fill(255);
-                    noStroke();
+                    stroke(200, 40, 40);
                     text('Play again?', windowWidth/2, windowHeight/2);
+                    noStroke();
                     this.play_button_hover = true;
                     
                 }
@@ -117,9 +116,10 @@ function View(type) {
                 stroke(0);
                 rect(this.button_posx, this.button_posy, this.button_width, this.button_height);
                 textSize(40);
-                fill(0);
                 noStroke();
+                fill(0);
                 text('Play again?', windowWidth/2, windowHeight/2);
+                noStroke();
                 this.play_button_hover = false;
             }
             

@@ -1,5 +1,5 @@
 var person;
-var obstacle;
+//var obstacle;
 var tc;
 var vertical_scale = 1.5;
 var jump = false;
